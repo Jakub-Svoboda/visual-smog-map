@@ -1,0 +1,10 @@
+<a href="{% url 'map:create' %}">Add billboard</a>
+{% if smog_list %}
+    <ul>
+    {% for smog in smog_list %}
+        <li><a href="{% url 'map:detail' smog.id %}">{{ smog.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No billboards are available.</p>
+{% endif %}
