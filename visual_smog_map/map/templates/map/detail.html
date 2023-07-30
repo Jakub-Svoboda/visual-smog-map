@@ -1,3 +1,4 @@
+<a href="{% url 'map:billboards' %}">Back to all billboards</a>
 <h1>{{ billboard.name }}</h1>
 <p>Legality status: {{ billboard.legality_status }}</p>
 <p>Note: {{ billboard.note }}</p>
@@ -7,3 +8,4 @@
 <p>LV: {{ billboard.lv }}</p>
 <p>Cadaster: {{ billboard.cadaster }}</p>
 <p>Date added: {{ billboard.pub_date }}</p>
+<p>Approved: {{ billboard.approved }}</p>

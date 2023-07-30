@@ -19,6 +19,7 @@ class Smog(models.Model):
     )  # Longitude range: -180 to 180 degrees
     cadaster = models.CharField(max_length=500)
     pub_date = models.DateTimeField("date published")
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
