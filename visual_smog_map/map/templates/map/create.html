@@ -1,35 +1,9 @@
-<form action="{% url 'map:save' %}" method="post">
+<!-- map/create.html -->
+<form method="post">
     {% csrf_token %}
     <fieldset>
         <legend><h1>Add a new billboard</h1></legend>
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-        <label for="id_name">Name:</label>
-        <input type="text" name="name" id="id_name" required maxlength="300"><br>
-
-        <label for="id_note">Note:</label>
-        <textarea name="note" id="id_note" required maxlength="3000"></textarea><br>
-
-        <label for="id_parcel">Parcel:</label>
-        <input type="text" name="parcel" id="id_parcel" required maxlength="300"><br>
-
-        <label for="id_lv">Lv:</label>
-        <input type="text" name="lv" id="id_lv" required maxlength="300"><br>
-
-        <label for="id_legality_status">Legality Status:</label>
-        <input type="text" name="legality_status" id="id_legality_status" required maxlength="300"><br>
-
-        <label for="id_latitude">Latitude:</label>
-        <input type="text" name="latitude" id="id_latitude" required maxlength="300"><br>
-
-        <label for="id_longitude">Longitude:</label>
-        <input type="text" name="longitude" id="id_longitude" required maxlength="300"><br>
-
-        <label for="id_cadaster">Cadaster:</label>
-        <input type="text" name="cadaster" id="id_cadaster" required maxlength="500"><br>
-
-        <label for="id_pub_date">Publication Date:</label>
-        <input type="datetime-local" name="pub_date" id="id_pub_date" required><br>
+        {{ form.as_p }}
     </fieldset>
     <input type="submit" value="Submit">
 </form>
