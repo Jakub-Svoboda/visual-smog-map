@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'map/style.css' %}">
 <a href="{% url 'map:create' %}">Add billboard</a>
 {% if smog_list %}
     <ul>
