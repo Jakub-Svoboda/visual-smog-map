@@ -1,3 +1,5 @@
+import os
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
@@ -24,6 +26,7 @@ def billboards(request):
     smog_list = Smog.objects.all()
     context = {
         'smog_list': smog_list,
+        'GOOGLE_APIKEY': str(os.getenv('GOOGLE_APIKEY'))
     }
     return HttpResponse(template.render(context, request))
 

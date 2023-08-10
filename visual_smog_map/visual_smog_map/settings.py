@@ -27,6 +27,7 @@ load_dotenv()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
+GOOGLE_APIKEY = str(os.getenv('GOOGLE_APIKEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
