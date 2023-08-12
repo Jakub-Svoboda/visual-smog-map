@@ -5,17 +5,7 @@
         <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Billboard Database</h2>
     </div>
 
-    <div id="map" style="width:100%;height:400px;"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 49.7587, lng: 15.4269},
-          zoom: 7
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_APIKEY }}&callback=initMap" async defer></script>
+    {% include 'map/map_full.html' %}
 
     <div class="w3-container">
     <a href="{% url 'map:create' %}">Add billboard</a>
