@@ -1,11 +1,16 @@
 {% extends 'map/template.html' %}
 {% block title %}My View Title{% endblock %}
 {% block content %}
-    <!-- Specific content for this view -->
     <div class="w3-container w3-padding-32" id="projects">
         <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Billboard Map</h2>
     </div>
-    <div class="w3-container">
-        <p>Project description placeholder text</p>
+
+    <div class="flex-container">
+        <div class="description-container w3-container w3-padding-32">
+            <p>Project description placeholder text. Project description placeholder text. Project description placeholder text. Project description placeholder text.</p>
+        </div>
+        <div class="map-container w3-container w3-padding-32">
+            {% include 'map/map_full.html' %}
+        </div>
     </div>
 {% endblock %}

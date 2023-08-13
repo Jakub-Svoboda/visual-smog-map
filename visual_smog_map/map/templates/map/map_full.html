@@ -1,28 +1,28 @@
-<div class="w3-container" id="map" style="width:60%;height:500px;"></div>
+<div class="w3-container" id="map" style="width:100%;height:500px;"></div>
 <script>
-  var map;
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 49.7587, lng: 15.4269},
-      zoom: 7
-    })
-    {% if smog_list %}
-      {% for smog in smog_list %}
-        new google.maps.Marker({
-          position: { lat: {{ smog.latitude }}, lng: {{ smog.longitude }}},
-          map,
-          icon: { 
-            {% if smog.legality_status == 'Illegal' %}
-                url: "http://maps.google.com/mapfiles/ms/icons/red.png",
-            {% elif smog.legality_status == 'Legal' %}    
-                url: "http://maps.google.com/mapfiles/ms/icons/green.png",
-            {% elif smog.legality_status == 'Unknown' %}    
-                url: "http://maps.google.com/mapfiles/ms/icons/yellow.png",                
-            {% endif %}
-          },
-        });
-      {% endfor %}
-    {% endif %} 
-  }
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 49.7587, lng: 15.4269},
+        zoom: 7
+        })
+        {% if smog_list %}
+            {% for smog in smog_list %}
+                new google.maps.Marker({
+                position: { lat: {{ smog.latitude }}, lng: {{ smog.longitude }}},
+                map,
+                icon: { 
+                    {% if smog.legality_status == 'Illegal' %}
+                        url: "http://maps.google.com/mapfiles/ms/icons/red.png",
+                    {% elif smog.legality_status == 'Legal' %}    
+                        url: "http://maps.google.com/mapfiles/ms/icons/green.png",
+                    {% elif smog.legality_status == 'Unknown' %}    
+                        url: "http://maps.google.com/mapfiles/ms/icons/yellow.png",                
+                    {% endif %}
+                },
+                });
+            {% endfor %}
+        {% endif %} 
+    }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_APIKEY }}&callback=initMap" async defer></script>

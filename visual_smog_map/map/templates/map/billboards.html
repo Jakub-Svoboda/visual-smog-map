@@ -5,18 +5,21 @@
         <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Billboard Database</h2>
     </div>
 
-    {% include 'map/map_full.html' %}
-
-    <div class="w3-container">
-    <a href="{% url 'map:create' %}">Add billboard</a>
-    {% if smog_list %}
-        <ul>
-        {% for smog in smog_list %}
-            <li><a href="{% url 'map:detail' smog.id %}">{{ smog.name }}</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No billboards are available.</p>
-    {% endif %}
+    <div class="flex-container">
+        <div class="map-container w3-container w3-padding-32">
+            {% include 'map/map_full.html' %}
+        </div>
+        <div class="list-container w3-container w3-padding-32">
+            <a href="{% url 'map:create' %}">Add billboard</a>
+            {% if smog_list %}
+                <ul>
+                    {% for smog in smog_list %}
+                        <li><a href="{% url 'map:detail' smog.id %}">{{ smog.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No billboards are available.</p>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
