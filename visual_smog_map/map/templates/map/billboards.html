@@ -9,14 +9,33 @@
         <div class="map-container w3-container w3-padding-32">
             {% include 'map/map_full.html' %}
         </div>
-        <div class="list-container w3-container w3-padding-32">
-            <a href="{% url 'map:create' %}">Add billboard</a>
+        <div class="list-container w3-padding-32">
+            <button class="w3-button w3-blue" onclick="window.location.href='{% url 'map:create' %}'">Add billboard</button>
+
+            {% include "map/billboards_filter.html" %}    
+
             {% if smog_list %}
-                <ul>
-                    {% for smog in smog_list %}
-                        <li><a href="{% url 'map:detail' smog.id %}">{{ smog.name }}</a></li>
-                    {% endfor %}
-                </ul>
+                <table class="w3-table-all w3-margin-top">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Note</th>
+                            <th>Legality Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for smog in smog_list %}
+                            {% if smog.approved %}
+                                <tr>
+                                    <td><a href="{% url 'map:detail' smog.id %}">{{ smog.name }}</a></td>
+                                    <td>{{ smog.note }}</td>
+                                    <td>{{ smog.legality_status }}</td>
+                                    {% comment %} <td><a href="{% url 'map:edit' smog.id %}">Edit</a> | <a href="{% url 'map:delete' smog.id %}">Delete</a></td> {% endcomment %}
+                                </tr>
+                            {% endif %}    
+                        {% endfor %}
+                    </tbody>
+                </table>
             {% else %}
                 <p>No billboards are available.</p>
             {% endif %}

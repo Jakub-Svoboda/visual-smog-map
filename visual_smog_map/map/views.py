@@ -31,8 +31,16 @@ def billboards(request: HttpRequest) -> HttpResponse:
     """
     View of billboard database.
     """
-    smog_list = Smog.objects.all()
-    context = {"smog_list": smog_list, "GOOGLE_APIKEY": str(os.getenv("GOOGLE_APIKEY"))}
+    legality_filter = request.GET.get("legality_filter", "All")
+    if legality_filter == "All":
+        smog_list = Smog.objects.all()
+    else:
+        smog_list = Smog.objects.filter(legality_status=legality_filter)
+    context = {
+        "smog_list": smog_list,
+        "legality_filter": legality_filter,
+        "GOOGLE_APIKEY": str(os.getenv("GOOGLE_APIKEY")),
+    }
     template = loader.get_template("map/billboards.html")
     return HttpResponse(template.render(context, request))
 

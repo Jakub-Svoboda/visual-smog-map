@@ -1,0 +1,12 @@
+<div class="w3-padding-top-32">
+    <form method="get">                
+        <label for="search">Filter billboards:</label>
+        <select name="legality_filter" id="legality_filter">
+            <option value="All" {% if legality_filter == 'All' %}selected{% endif %} >All</option>
+            <option value="Legal" {% if legality_filter == 'Legal' %}selected{% endif %}>Legal</option>
+            <option value="Illegal" {% if legality_filter == 'Illegal' %}selected{% endif %}>Illegal</option>
+            <option value="Unknown" {% if legality_filter == 'Unknown' %}selected{% endif %}>Unknown</option>
+        </select>
+        <button type="submit">Apply filter</button>
+    </form>
+</div>
