@@ -1,5 +1,5 @@
 """
-Views of the mapp app.
+Views of the map app.
 
 Jakub Svoboda, 2023
 """
